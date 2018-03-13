@@ -16,6 +16,10 @@
 		A67097F9204751680041542A /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F5204751670041542A /* maze.cpp */; };
 		A67097FA204751680041542A /* DisjointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F7204751670041542A /* DisjointSet.cpp */; };
 		A67097FD204759C80041542A /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097FB204759C70041542A /* Renderer.mm */; };
+		C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C986111720587EF700335C8A /* GLESRenderer.cpp */; };
+		C986111F2058813200335C8A /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C986111E2058813200335C8A /* crate.jpg */; };
+		C98611222058818B00335C8A /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C98611202058818B00335C8A /* Shader.fsh */; };
+		C98611232058818B00335C8A /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C98611212058818B00335C8A /* Shader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,11 @@
 		A67097F8204751670041542A /* maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
 		A67097FB204759C70041542A /* Renderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Renderer.mm; sourceTree = "<group>"; };
 		A67097FC204759C80041542A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		C986111720587EF700335C8A /* GLESRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLESRenderer.cpp; sourceTree = "<group>"; };
+		C986111820587EF800335C8A /* GLESRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLESRenderer.hpp; sourceTree = "<group>"; };
+		C986111E2058813200335C8A /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
+		C98611202058818B00335C8A /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		C98611212058818B00335C8A /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +76,11 @@
 		A67097DE2047512B0041542A /* Maze */ = {
 			isa = PBXGroup;
 			children = (
+				C98611202058818B00335C8A /* Shader.fsh */,
+				C98611212058818B00335C8A /* Shader.vsh */,
+				C986111E2058813200335C8A /* crate.jpg */,
+				C986111720587EF700335C8A /* GLESRenderer.cpp */,
+				C986111820587EF800335C8A /* GLESRenderer.hpp */,
 				A67097F7204751670041542A /* DisjointSet.cpp */,
 				A67097F6204751670041542A /* DisjointSet.h */,
 				A67097F5204751670041542A /* maze.cpp */,
@@ -146,7 +160,10 @@
 			files = (
 				A67097EC2047512B0041542A /* LaunchScreen.storyboard in Resources */,
 				A67097E92047512B0041542A /* Assets.xcassets in Resources */,
+				C98611232058818B00335C8A /* Shader.vsh in Resources */,
+				C986111F2058813200335C8A /* crate.jpg in Resources */,
 				A67097E72047512B0041542A /* Main.storyboard in Resources */,
+				C98611222058818B00335C8A /* Shader.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67097E42047512B0041542A /* ViewController.m in Sources */,
+				C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */,
 				A67097EF2047512B0041542A /* main.m in Sources */,
 				A67097F9204751680041542A /* maze.cpp in Sources */,
 				A67097E12047512B0041542A /* AppDelegate.m in Sources */,

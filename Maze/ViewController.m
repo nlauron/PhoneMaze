@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    glesRenderer = [[Renderer alloc] init];
+    GLKView *view = (GLKView *)self.view;
+    [glesRenderer setup:view];
+    [glesRenderer loadModels];
 }
 
 
@@ -27,5 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)update {
+    [glesRenderer update];
+}
 
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
+    [glesRenderer draw:rect];
+}
 @end
