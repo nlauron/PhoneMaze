@@ -4,9 +4,11 @@ layout(location = 0) in vec4 position;
 layout(location = 1) in vec4 color;
 layout(location = 2) in vec3 normal;
 layout(location = 3) in vec2 texCoordIn;
+layout(location = 4) in vec4 colorDiffuse;
 out vec4 v_color;
 out vec3 v_normal;
 out vec2 v_texcoord;
+out vec4 v_colorDiffuse;
 
 uniform mat4 modelViewProjectionMatrix;
 uniform mat3 normalMatrix;
@@ -28,13 +30,14 @@ void main()
         // Diffuse shading
         vec3 eyeNormal = normalize(normalMatrix * normal);
         vec3 lightPosition = vec3(0.0, 0.0, 1.0);
-        vec4 diffuseColor = vec4(0.0, 1.0, 0.0, 1.0);
+        vec4 diffuseColor = colorDiffuse;
         
         float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));
         
         v_color = diffuseColor * nDotVP;
         v_normal = vec3(0, 0, 0);
         v_texcoord = vec2(0, 0);
+        v_colorDiffuse = colorDiffuse;
     }
 
     gl_Position = modelViewProjectionMatrix * position;
