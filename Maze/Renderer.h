@@ -5,17 +5,20 @@
 #ifndef Renderer_h
 #define Renderer_h
 #import <GLKit/GLKit.h>
+#import "Model.h"
 
 @interface Renderer : NSObject
 
 @property float rotAngle;
 @property bool isRotating;
+@property Model* camera;
 
 
 - (void)setup:(GLKView *)view;
 - (void)loadModels;
 - (void)update;
 - (void)draw:(CGRect)drawRect;
+- (void)addModel:(Model*)mod;
 
 @end
 
