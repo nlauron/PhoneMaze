@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "MazeBuilder.h"
 
 @interface ViewController () {
     Renderer *glesRenderer;
-    Maze maze;
+    MazeObject *maze;
 }
 
 @end
@@ -21,11 +22,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    maze = Maze(10,10);
     glesRenderer = [[Renderer alloc] init];
     GLKView *view = (GLKView *)self.view;
     [glesRenderer setup:view];
     [glesRenderer loadModels];
+    
+    maze = [[MazeObject alloc] init:glesRenderer x:10 y:10];
 }
 
 

@@ -16,6 +16,9 @@
 		A67097F9204751680041542A /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F5204751670041542A /* maze.cpp */; };
 		A67097FA204751680041542A /* DisjointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F7204751670041542A /* DisjointSet.cpp */; };
 		A67097FD204759C80041542A /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097FB204759C70041542A /* Renderer.mm */; };
+		A6B83A4F2059A6B800373BA6 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A4E2059A6B800373BA6 /* Model.m */; };
+		A6B83A512059D51900373BA6 /* MazeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A502059D51900373BA6 /* MazeFloor.m */; };
+		A6B83A552059E0F200373BA6 /* MazeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A542059E0F200373BA6 /* MazeBuilder.mm */; };
 		C926F8862058F7310077F931 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C926F8852058F7310077F931 /* GLKit.framework */; };
 		C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C986111720587EF700335C8A /* GLESRenderer.cpp */; };
 		C986111F2058813200335C8A /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C986111E2058813200335C8A /* crate.jpg */; };
@@ -40,6 +43,12 @@
 		A67097F8204751670041542A /* maze.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = maze.hpp; sourceTree = "<group>"; };
 		A67097FB204759C70041542A /* Renderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Renderer.mm; sourceTree = "<group>"; };
 		A67097FC204759C80041542A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		A6B83A4D2059A41200373BA6 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		A6B83A4E2059A6B800373BA6 /* Model.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		A6B83A502059D51900373BA6 /* MazeFloor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazeFloor.m; sourceTree = "<group>"; };
+		A6B83A522059D53900373BA6 /* MazeFloor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeFloor.h; sourceTree = "<group>"; };
+		A6B83A532059E08A00373BA6 /* MazeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeBuilder.h; sourceTree = "<group>"; };
+		A6B83A542059E0F200373BA6 /* MazeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MazeBuilder.mm; sourceTree = "<group>"; };
 		C926F8852058F7310077F931 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		C986111720587EF700335C8A /* GLESRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLESRenderer.cpp; sourceTree = "<group>"; };
 		C986111820587EF800335C8A /* GLESRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLESRenderer.hpp; sourceTree = "<group>"; };
@@ -88,6 +97,8 @@
 				A67097F7204751670041542A /* DisjointSet.cpp */,
 				A67097F6204751670041542A /* DisjointSet.h */,
 				A67097F5204751670041542A /* maze.cpp */,
+				A6B83A532059E08A00373BA6 /* MazeBuilder.h */,
+				A6B83A542059E0F200373BA6 /* MazeBuilder.mm */,
 				A67097F8204751670041542A /* maze.hpp */,
 				A67097DF2047512B0041542A /* AppDelegate.h */,
 				A67097E02047512B0041542A /* AppDelegate.m */,
@@ -99,7 +110,11 @@
 				A67097ED2047512B0041542A /* Info.plist */,
 				A67097EE2047512B0041542A /* main.m */,
 				A67097FC204759C80041542A /* Renderer.h */,
+				A6B83A502059D51900373BA6 /* MazeFloor.m */,
+				A6B83A522059D53900373BA6 /* MazeFloor.h */,
 				A67097FB204759C70041542A /* Renderer.mm */,
+				A6B83A4D2059A41200373BA6 /* Model.h */,
+				A6B83A4E2059A6B800373BA6 /* Model.m */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -193,6 +208,9 @@
 				A67097E12047512B0041542A /* AppDelegate.m in Sources */,
 				A67097FD204759C80041542A /* Renderer.mm in Sources */,
 				A67097FA204751680041542A /* DisjointSet.cpp in Sources */,
+				A6B83A4F2059A6B800373BA6 /* Model.m in Sources */,
+				A6B83A552059E0F200373BA6 /* MazeBuilder.mm in Sources */,
+				A6B83A512059D51900373BA6 /* MazeFloor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,9 +345,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E5RA54B7H;
 				INFOPLIST_FILE = Maze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = btechgames.bcit.ca.Maze;
+				PRODUCT_BUNDLE_IDENTIFIER = matttaylor.bcit.ca.Maze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -340,9 +359,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3E5RA54B7H;
 				INFOPLIST_FILE = Maze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = btechgames.bcit.ca.Maze;
+				PRODUCT_BUNDLE_IDENTIFIER = matttaylor.bcit.ca.Maze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
