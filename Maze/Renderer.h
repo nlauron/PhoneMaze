@@ -18,6 +18,8 @@
 - (void)loadModels;
 - (void)update;
 - (void)draw:(CGRect)drawRect;
+- (void)dayDiffuse;
+- (void)nightDiffuse;
 - (void)addModel:(Model*)mod;
 
 @end

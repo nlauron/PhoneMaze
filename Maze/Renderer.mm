@@ -172,7 +172,6 @@ enum
     return true;
 }
 
-
 // Load in and set up texture image (adapted from Ray Wenderlich)
 - (GLuint)setupTexture:(NSString *)fileName
 {
@@ -205,6 +204,25 @@ enum
     return texName;
 }
 
+- (void)nightDiffuse
+{
+    glVertexAttrib4f ( 4, 0.25f, 0.25f, 0.25f, 0.25f);
+}
+
+- (void)dayDiffuse
+{
+    glVertexAttrib4f ( 4, 1.0f, 1.0f, 1.0f, 1.0f );
+}
+
+- (void)fog
+{
+    
+}
+
+- (void)flashlight
+{
+    
+}
 - (void)addModel:(Model*)mod {
     [modelList addObject:mod];
 }
