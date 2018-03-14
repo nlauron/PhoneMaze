@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "MazeBuilder.h"
 
 @interface ViewController () {
     Renderer *glesRenderer;
+    MazeObject *maze;
 }
 
 @property (weak, nonatomic) IBOutlet UISwitch *dayToggle;
@@ -44,6 +46,8 @@
     [doubleTapRecognizer setNumberOfTouchesRequired:2];
     [doubleTapRecognizer setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTapRecognizer];
+        
+    maze = [[MazeObject alloc] init:glesRenderer x:10 y:10];
 }
 
 - (void)singleDragResponder: (UIGestureRecognizer *) sender {

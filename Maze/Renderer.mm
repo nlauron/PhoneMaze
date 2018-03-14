@@ -7,6 +7,8 @@
 #import <GLKit/GLKit.h>
 #include <chrono>
 #include "GLESRenderer.hpp"
+#import "MazeFloor.h"
+
 
 // Uniform index.
 enum
@@ -34,12 +36,10 @@ enum
     GLuint programObject;
     GLuint crateTexture;
     std::chrono::time_point<std::chrono::steady_clock> lastTime;
+    NSMutableArray *modelList;
 
     GLKMatrix4 mvp;
     GLKMatrix3 normalMatrix;
-
-    float *vertices, *normals, *texCoords;
-    int *indices, numIndices;
 }
 
 @end
@@ -48,6 +48,7 @@ enum
 
 @synthesize isRotating;
 @synthesize rotAngle;
+@synthesize camera;
 
 - (void)dealloc
 {
@@ -56,7 +57,9 @@ enum
 
 - (void)loadModels
 {
-    numIndices = glesRenderer.GenCube(1.0f, &vertices, &normals, &texCoords, &indices);
+    
+    //NSLog([NSString stringWithFormat:@"vertices: %p\n normals: %p\ntexCoords: %p\nnumIndices: %d\nindices: %p", mod.vertices, mod.normals, mod.texCoords, mod.numIndices, mod.indices]);
+
 }
 
 - (void)setup:(GLKView *)view
@@ -83,6 +86,10 @@ enum
     glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
     glEnable(GL_DEPTH_TEST);
     lastTime = std::chrono::steady_clock::now();
+    
+    camera = [[Model alloc] init:0 y:0 z:5];
+    
+    modelList = [[NSMutableArray alloc] init];
 }
 
 - (void)update
@@ -93,24 +100,14 @@ enum
     
     if (isRotating)
     {
-        rotAngle += 0.001f * elapsedTime;
-        if (rotAngle >= 360.0f)
-            rotAngle = 0.0f;
+        //camera = GLKMatrix4RotateX(camera, 0.01f * elapsedTime);
     }
 
-    // Perspective
-    mvp = GLKMatrix4Translate(GLKMatrix4Identity, 0.0, 0.0, -5.0);
-    mvp = GLKMatrix4Rotate(mvp, rotAngle, 1.0, 0.0, 1.0 );
-    normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(mvp), NULL);
-
-    float aspect = (float)theView.drawableWidth / (float)theView.drawableHeight;
-    GLKMatrix4 perspective = GLKMatrix4MakePerspective(60.0f * M_PI / 180.0f, aspect, 1.0f, 20.0f);
-
-    mvp = GLKMatrix4Multiply(perspective, mvp);
 }
 
 - (void)draw:(CGRect)drawRect;
 {
+
     glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, FALSE, (const float *)mvp.m);
     glUniformMatrix3fv(uniforms[UNIFORM_NORMAL_MATRIX], 1, 0, normalMatrix.m);
     glUniform1i(uniforms[UNIFORM_PASSTHROUGH], false);
@@ -119,23 +116,40 @@ enum
     glViewport(0, 0, (int)theView.drawableWidth, (int)theView.drawableHeight);
     glClear ( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glUseProgram ( programObject );
-
-    glVertexAttribPointer ( 0, 3, GL_FLOAT,
-                           GL_FALSE, 3 * sizeof ( GLfloat ), vertices );
-    glEnableVertexAttribArray ( 0 );
-
-    glVertexAttrib4f ( 1, 1.0f, 0.0f, 0.0f, 1.0f );
-
-    glVertexAttribPointer ( 2, 3, GL_FLOAT,
-                           GL_FALSE, 3 * sizeof ( GLfloat ), normals );
-    glEnableVertexAttribArray ( 2 );
-
-    glVertexAttribPointer ( 3, 2, GL_FLOAT,
-                           GL_FALSE, 2 * sizeof ( GLfloat ), texCoords );
-    glEnableVertexAttribArray ( 3 );
     
-    glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, FALSE, (const float *)mvp.m);
-    glDrawElements ( GL_TRIANGLES, numIndices, GL_UNSIGNED_INT, indices );
+    GLKMatrix4 view = GLKMatrix4Invert(camera.transform, nil);
+    
+    for(Model *mod in modelList) {
+        // Perspective
+        //mvp = GLKMatrix4Translate(GLKMatrix4Identity, 0.0, 0.0, -5.0);
+        //mvp = GLKMatrix4Rotate(mvp, rotAngle, 1.0, 0.0, 1.0 );
+        mvp = mod.transform;
+        normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(mvp), NULL);
+        mvp = GLKMatrix4Multiply(view, mvp);
+        
+        float aspect = (float)theView.drawableWidth / (float)theView.drawableHeight;
+        GLKMatrix4 perspective = GLKMatrix4MakePerspective(60.0f * M_PI / 180.0f, aspect, 1.0f, 20.0f);
+        
+        mvp = GLKMatrix4Multiply(perspective, mvp);
+
+        //NSLog([NSString stringWithFormat:@"vertices: %p\n normals: %p\ntexCoords: %p\nnumIndices: %d\nindices: %p", mod.vertices, mod.normals, mod.texCoords, mod.numIndices, mod.indices]);
+        glVertexAttribPointer ( 0, 3, GL_FLOAT,
+                               GL_FALSE, 3 * sizeof ( GLfloat ), mod.vertices );
+        glEnableVertexAttribArray ( 0 );
+        
+        glVertexAttrib4f ( 1, 1.0f, 0.0f, 0.0f, 1.0f );
+        
+        glVertexAttribPointer ( 2, 3, GL_FLOAT,
+                               GL_FALSE, 3 * sizeof ( GLfloat ), mod.normals );
+        glEnableVertexAttribArray ( 2 );
+        
+        glVertexAttribPointer ( 3, 2, GL_FLOAT,
+                               GL_FALSE, 2 * sizeof ( GLfloat ), mod.texCoords );
+        glEnableVertexAttribArray ( 3 );
+        
+        glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, FALSE, (const float *)mvp.m);
+        glDrawElements ( GL_TRIANGLES, mod.numIndices, GL_UNSIGNED_INT, mod.indices );
+    }
 }
 
 
@@ -209,5 +223,9 @@ enum
 {
     
 }
+- (void)addModel:(Model*)mod {
+    [modelList addObject:mod];
+}
+
 @end
 
