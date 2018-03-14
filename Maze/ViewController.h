@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 #import "Renderer.h"
+#import "maze.hpp"
 
 @interface ViewController : GLKViewController
 

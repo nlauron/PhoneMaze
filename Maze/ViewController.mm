@@ -10,6 +10,7 @@
 
 @interface ViewController () {
     Renderer *glesRenderer;
+    Maze maze;
 }
 
 @end
@@ -20,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    maze = Maze(10,10);
     glesRenderer = [[Renderer alloc] init];
     GLKView *view = (GLKView *)self.view;
     [glesRenderer setup:view];

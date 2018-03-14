@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A67097E12047512B0041542A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A67097E02047512B0041542A /* AppDelegate.m */; };
-		A67097E42047512B0041542A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67097E32047512B0041542A /* ViewController.m */; };
+		A67097E42047512B0041542A /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097E32047512B0041542A /* ViewController.mm */; };
 		A67097E72047512B0041542A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67097E52047512B0041542A /* Main.storyboard */; };
 		A67097E92047512B0041542A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67097E82047512B0041542A /* Assets.xcassets */; };
 		A67097EC2047512B0041542A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67097EA2047512B0041542A /* LaunchScreen.storyboard */; };
@@ -16,6 +16,7 @@
 		A67097F9204751680041542A /* maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F5204751670041542A /* maze.cpp */; };
 		A67097FA204751680041542A /* DisjointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A67097F7204751670041542A /* DisjointSet.cpp */; };
 		A67097FD204759C80041542A /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097FB204759C70041542A /* Renderer.mm */; };
+		C926F8862058F7310077F931 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C926F8852058F7310077F931 /* GLKit.framework */; };
 		C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C986111720587EF700335C8A /* GLESRenderer.cpp */; };
 		C986111F2058813200335C8A /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C986111E2058813200335C8A /* crate.jpg */; };
 		C98611222058818B00335C8A /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C98611202058818B00335C8A /* Shader.fsh */; };
@@ -27,7 +28,7 @@
 		A67097DF2047512B0041542A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A67097E02047512B0041542A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A67097E22047512B0041542A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A67097E32047512B0041542A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A67097E32047512B0041542A /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		A67097E62047512B0041542A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A67097E82047512B0041542A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A67097EB2047512B0041542A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,9 +37,10 @@
 		A67097F5204751670041542A /* maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = maze.cpp; sourceTree = "<group>"; };
 		A67097F6204751670041542A /* DisjointSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisjointSet.h; sourceTree = "<group>"; };
 		A67097F7204751670041542A /* DisjointSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisjointSet.cpp; sourceTree = "<group>"; };
-		A67097F8204751670041542A /* maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maze.h; sourceTree = "<group>"; };
+		A67097F8204751670041542A /* maze.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = maze.hpp; sourceTree = "<group>"; };
 		A67097FB204759C70041542A /* Renderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Renderer.mm; sourceTree = "<group>"; };
 		A67097FC204759C80041542A /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		C926F8852058F7310077F931 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		C986111720587EF700335C8A /* GLESRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLESRenderer.cpp; sourceTree = "<group>"; };
 		C986111820587EF800335C8A /* GLESRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLESRenderer.hpp; sourceTree = "<group>"; };
 		C986111E2058813200335C8A /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C926F8862058F7310077F931 /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 			children = (
 				A67097DE2047512B0041542A /* Maze */,
 				A67097DD2047512B0041542A /* Products */,
+				C926F8842058F7300077F931 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,11 +88,11 @@
 				A67097F7204751670041542A /* DisjointSet.cpp */,
 				A67097F6204751670041542A /* DisjointSet.h */,
 				A67097F5204751670041542A /* maze.cpp */,
-				A67097F8204751670041542A /* maze.h */,
+				A67097F8204751670041542A /* maze.hpp */,
 				A67097DF2047512B0041542A /* AppDelegate.h */,
 				A67097E02047512B0041542A /* AppDelegate.m */,
 				A67097E22047512B0041542A /* ViewController.h */,
-				A67097E32047512B0041542A /* ViewController.m */,
+				A67097E32047512B0041542A /* ViewController.mm */,
 				A67097E52047512B0041542A /* Main.storyboard */,
 				A67097E82047512B0041542A /* Assets.xcassets */,
 				A67097EA2047512B0041542A /* LaunchScreen.storyboard */,
@@ -98,6 +102,14 @@
 				A67097FB204759C70041542A /* Renderer.mm */,
 			);
 			path = Maze;
+			sourceTree = "<group>";
+		};
+		C926F8842058F7300077F931 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C926F8852058F7310077F931 /* GLKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,7 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A67097E42047512B0041542A /* ViewController.m in Sources */,
+				A67097E42047512B0041542A /* ViewController.mm in Sources */,
 				C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */,
 				A67097EF2047512B0041542A /* main.m in Sources */,
 				A67097F9204751680041542A /* maze.cpp in Sources */,

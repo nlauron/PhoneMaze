@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include "maze.h"
+#include "maze.hpp"
 
 Maze::Maze(int rows, int cols)
 {
