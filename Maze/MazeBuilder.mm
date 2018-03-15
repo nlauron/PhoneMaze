@@ -27,7 +27,7 @@
     float startX = -col / 2.0f;
     float startZ = -row / 2.0f;
     
-    [renderer.camera translate:startX y:0 z: startZ - 1];
+    [renderer.camera translate:startX y:0 z: startZ - 1.5f];
     [renderer.camera rotate:0 y:M_PI z:0];
     
     for(int i = 0; i < row; i++) {
@@ -40,22 +40,30 @@
             
             if(cell.northWallPresent){
                 MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:0];
-                wall.texIndex = 0;
+                wall.texIndex = 2;
+                if(cell.westWallPresent) wall.texIndex += 1;
+                if(cell.eastWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.westWallPresent){
                 MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:1];
-                wall.texIndex = 0;
+                wall.texIndex = 2;
+                if(cell.southWallPresent) wall.texIndex += 1;
+                if(cell.northWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.southWallPresent){
                 MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:2];
-                wall.texIndex = 0;
+                wall.texIndex = 2;
+                if(cell.eastWallPresent) wall.texIndex += 1;
+                if(cell.westWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.eastWallPresent){
                 MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:3];
-                wall.texIndex = 0;
+                wall.texIndex = 2;
+                if(cell.northWallPresent) wall.texIndex += 1;
+                if(cell.southWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             
