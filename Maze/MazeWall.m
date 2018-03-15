@@ -1,30 +1,35 @@
 //
-//  MazeFloor.m
+//  MazeWall.m
 //  Maze
 //
 //  Created by Matthew Taylor on 2018-03-14.
 //  Copyright © 2018 Matthew Taylor. All rights reserved.
 //
 
-#import "MazeFloor.h"
+#import "MazeWall.h"
 
-@implementation MazeFloor
+@interface MazeWall() {
+    
+}
+@end
 
-- (id)initWithFloor:(float)x y:(float)y z:(float)z {
+@implementation MazeWall
+
+- (id)init:(float)x y:(float)y z:(float)z dir:(float)dir {
     self = [super init:x y:y z:z];
     
     float verts[] = {
-        -0.5f, -0.5f, 0.5f,
+        -0.5f, 0.5f, -0.5f,
         -0.5f, -0.5f, -0.5f,
         0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, 0.5f
+        0.5f, 0.5f, -0.5f
     };
     
     float norms[] = {
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
+        0.0f, 0.0f, 1.0f,
     };
     
     float texs[] = {
@@ -49,8 +54,8 @@
     memcpy(self.indices, inds, sizeof(int) * 6);
     self.numIndices = 6;
     
-    [self rotate:0 y:0 z:0];
-    
+    [self rotate:0 y:M_PI_2 * dir z:0];
+
     return self;
 }
 
