@@ -34,8 +34,7 @@ enum
     GLKView *theView;
     GLESRenderer glesRenderer;
     GLuint programObject;
-    GLuint floorTexture;
-    GLuint crateTexture;
+    GLuint floorTexture, crateTexture, wallTextureNone, wallTextureLeft, wallTextureRight, wallTextureBoth;
     std::chrono::time_point<std::chrono::steady_clock> lastTime;
     NSMutableArray *modelList;
 
@@ -81,11 +80,23 @@ enum
 
     floorTexture = [self setupTexture:@"dirt.jpg"];
     crateTexture = [self setupTexture:@"crate.jpg"];
+    wallTextureNone = [self setupTexture:@"wall_none.jpg"];
+    wallTextureLeft = [self setupTexture:@"wall_left.jpg"];
+    wallTextureRight = [self setupTexture:@"wall_right.jpg"];
+    wallTextureBoth = [self setupTexture:@"wall_both.jpg"];
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, floorTexture);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, crateTexture);
-    
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, wallTextureNone);
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, wallTextureLeft);
+    glActiveTexture(GL_TEXTURE4);
+    glBindTexture(GL_TEXTURE_2D, wallTextureRight);
+    glActiveTexture(GL_TEXTURE5);
+    glBindTexture(GL_TEXTURE_2D, wallTextureBoth);
+
     glUniform1i(uniforms[UNIFORM_TEXTURE], 0);
 
     glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
@@ -133,7 +144,7 @@ enum
         mvp = GLKMatrix4Multiply(view, mvp);
         
         float aspect = (float)theView.drawableWidth / (float)theView.drawableHeight;
-        GLKMatrix4 perspective = GLKMatrix4MakePerspective(60.0f * M_PI / 180.0f, aspect, 1.0f, 20.0f);
+        GLKMatrix4 perspective = GLKMatrix4MakePerspective(60.0f * M_PI / 180.0f, aspect, 0.5f, 20.0f);
         
         mvp = GLKMatrix4Multiply(perspective, mvp);
 
