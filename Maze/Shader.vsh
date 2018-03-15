@@ -10,13 +10,24 @@ out vec3 v_normal;
 out vec2 v_texcoord;
 out vec4 v_colorDiffuse;
 
+out vec3 world_pos;
+out vec3 world_normal;
+out vec4 view_space;
+
 uniform mat4 modelViewProjectionMatrix;
 uniform mat3 normalMatrix;
 uniform bool passThrough;
 uniform bool shadeInFrag;
+uniform bool foggy;
 
 void main()
 {
+    if (foggy) {
+        world_pos = (modelViewProjectionMatrix * vec4(position)).xyz;
+        world_normal = normalize(mat3(normalMatrix)* normal);
+        v_texcoord = texCoordIn;
+        view_space = modelViewProjectionMatrix * vec4(position);
+    }
     if (passThrough)
     {
         // Simple passthrough shader
@@ -40,6 +51,10 @@ void main()
         v_texcoord = vec2(0, 0);
         v_colorDiffuse = colorDiffuse;
     }
-
-    gl_Position = modelViewProjectionMatrix * position;
+    
+    if (foggy) {
+        gl_Position = modelViewProjectionMatrix * view_space;
+    } else {
+        gl_Position = modelViewProjectionMatrix * position;
+    }
 }
