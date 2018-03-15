@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *dayToggle;
 @property (weak, nonatomic) IBOutlet UISwitch *fogToggle;
 @property (weak, nonatomic) IBOutlet UISwitch *lightToggle;
+@property (weak, nonatomic) IBOutlet UISwitch *fogTypeToggle;
 
 @end
 
@@ -46,7 +47,7 @@
     [doubleTapRecognizer setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTapRecognizer];
     
-    maze = [[MazeObject alloc] init:glesRenderer x:10 y:10];
+    maze = [[MazeObject alloc] init:glesRenderer row:10 col:10];
 }
 
 - (void)singleDragResponder: (UIPanGestureRecognizer *) sender {
@@ -88,6 +89,12 @@
         [glesRenderer fogOn];
     } else {
         [glesRenderer fogOff];
+    }
+    
+    if ([_fogTypeToggle isOn]) {
+        [glesRenderer fogSpecular];
+    } else {
+        [glesRenderer fogLinear];
     }
     
     if ([_lightToggle isOn]) {

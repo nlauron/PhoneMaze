@@ -37,6 +37,7 @@ void main()
     } else if (shadeInFrag) {
         v_normal = normal;
         v_texcoord = texCoordIn;
+        v_colorDiffuse = colorDiffuse;
     } else {
         // Diffuse shading
         vec3 eyeNormal = normalize(normalMatrix * normal);
@@ -50,6 +51,10 @@ void main()
         v_texcoord = vec2(0, 0);
         v_colorDiffuse = colorDiffuse;
     }
-
-    gl_Position = modelViewProjectionMatrix * position;
+    
+    if (foggy) {
+        gl_Position = modelViewProjectionMatrix * view_space;
+    } else {
+        gl_Position = modelViewProjectionMatrix * position;
+    }
 }

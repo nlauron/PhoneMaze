@@ -18,6 +18,7 @@ uniform vec3 light_pos;
 uniform vec3 eye_pos;
 uniform sampler2D texture1;
 
+uniform int fogSelector;
 uniform int depthFog;
 
 const vec3 FogDiffuse = vec3(0.15, 0.05, 0.0);
@@ -25,7 +26,7 @@ const vec3 RimColor = vec3 (0.2, 0.2, 0.2);
 
 in vec3 world_pos;
 in vec3 world_normal;
-in vec4 viewSpace;
+in vec4 view_space;
 
 const vec3 fogColor = vec3(0.5, 0.5, 0.5);
 const float FogDensity = 0.05;
@@ -47,26 +48,32 @@ void main()
         vec3 lightColor = finalRim + diffuse + tex1;
         vec3 finalColor = vec3(0,0,0);
         
-        float dist = 0;
-        float fogFactor = 0;
+        float dist = 0.0;
+        float fogFactor = 0.0;
         
         if(depthFog == 0) {
-            dist = abs(viewSpace.z);
+            dist = abs(view_space.z);
         } else {
-            dist = length(viewSpace);
+            dist = length(view_space);
         }
         
-        fogFactor = (80 - dist) / (80 - 20);
-        fogFactor = clamp(fogFactor, 0.0, 1.0);
+        if (fogSelector == 0){
+            fogFactor = (80.0 - dist) / (80.0 - 20.0);
+            fogFactor = clamp(fogFactor, 0.0, 1.0);
         
-        finalColor = mix(fogColor, lightColor, fogFactor);
-        
-        out_color = vec(finalColor, 1);
+            finalColor = mix(fogColor, lightColor, fogFactor);
+        } else if (fogSelector == 1) {
+            fogFactor = 1.0 / exp(dist * FogDensity);
+            fogFactor = clamp (fogFactor, 0.0, 1.0);
+            
+            finalColor = mix( fogColor, lightColor, fogFactor);
+        }
+        o_fragColor = vec4(finalColor, 1);
         
     }
     if (!passThrough && shadeInFrag) {
         vec3 eyeNormal = normalize(normalMatrix * v_normal);
-        vec3 lightPosition = vec3(0.0, 0.0, 1.0);
+        vec3 lightPosition = vec3(0.0, 1.0, 1.0);
         vec4 diffuseColor =  v_colorDiffuse;
         
         float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));

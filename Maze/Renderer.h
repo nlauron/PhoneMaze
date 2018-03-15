@@ -22,6 +22,8 @@
 - (void)nightDiffuse;
 - (void)fogOn;
 - (void)fogOff;
+- (void)fogLinear;
+- (void)fogSpecular;
 - (void)flashlightOn;
 - (void)flashlightOff;
 - (void)addModel:(Model*)mod;

@@ -13,7 +13,7 @@
 
 @interface MazeObject : NSObject
 
-- (id)init:(Renderer*)renderer x:(int)x y:(int)y;
+- (id)init:(Renderer*)renderer row:(int)row col:(int)col;
 
 @end
 

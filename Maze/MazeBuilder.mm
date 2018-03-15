@@ -9,28 +9,56 @@
 #import "MazeBuilder.h"
 #include "maze.hpp"
 #include "MazeFloor.h"
+#include "MazeWall.h"
 
 @interface MazeObject() {
-    Maze maze;
-    NSMutableArray *models;
+    Maze *maze;
 }
 @end
 
 
 @implementation MazeObject
 
-- (id)init:(Renderer*)renderer x:(int)x y:(int)y {
+- (id)init:(Renderer*)renderer row:(int)row col:(int)col {
     self = [super init];
-    maze = Maze(x,y);
+    maze = new Maze(row,col);
+    maze->Create();
     
-    float startX = -x / 2;
-    float startY = -y / 2;
+    float startX = -col / 2.0f;
+    float startZ = -row / 2.0f;
     
-    for(int i = 0; i < x; i++) {
-        for(int j = 0; j < y; j++) {
-            MazeFloor* floor = [[MazeFloor alloc] initWithFloor:startX + i y:-1 z:startY + j];
-            [floor rotate:M_PI_4 y:0 z:0];
-            [models addObject:floor];
+    [renderer.camera translate:startX y:0 z: startZ - 1];
+    [renderer.camera rotate:0 y:M_PI z:0];
+    
+    for(int i = 0; i < row; i++) {
+        for(int j = 0; j < col; j++) {
+            int xCoord = startX + j;
+            int zCoord = startZ + i;
+            
+            MazeFloor* floor = [[MazeFloor alloc] initWithFloor:xCoord y:0 z:zCoord];
+            MazeCell cell = maze->GetCell(i,j);
+            
+            if(cell.northWallPresent){
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:0];
+                wall.texIndex = 0;
+                [renderer addModel:wall];
+            }
+            if(cell.westWallPresent){
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:1];
+                wall.texIndex = 0;
+                [renderer addModel:wall];
+            }
+            if(cell.southWallPresent){
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:2];
+                wall.texIndex = 0;
+                [renderer addModel:wall];
+            }
+            if(cell.eastWallPresent){
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:3];
+                wall.texIndex = 0;
+                [renderer addModel:wall];
+            }
+            
             [renderer addModel:floor];
         }
     }
