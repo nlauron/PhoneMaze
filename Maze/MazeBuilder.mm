@@ -32,8 +32,8 @@
     
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < col; j++) {
-            int xCoord = startX + i;
-            int zCoord = startZ + j;
+            int xCoord = startX + j;
+            int zCoord = startZ + i;
             
             MazeFloor* floor = [[MazeFloor alloc] initWithFloor:xCoord y:0 z:zCoord];
             MazeCell cell = maze->GetCell(i,j);
