@@ -18,7 +18,7 @@
 		A67097FD204759C80041542A /* Renderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097FB204759C70041542A /* Renderer.mm */; };
 		A6B83A4F2059A6B800373BA6 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A4E2059A6B800373BA6 /* Model.m */; };
 		A6B83A512059D51900373BA6 /* MazeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A502059D51900373BA6 /* MazeFloor.m */; };
-		A6B83A552059E0F200373BA6 /* MazeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A542059E0F200373BA6 /* MazeBuilder.mm */; };
+		A6B83A552059E0F200373BA6 /* MazeObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A542059E0F200373BA6 /* MazeObject.mm */; };
 		A6B83A572059F22A00373BA6 /* dirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6B83A562059F22A00373BA6 /* dirt.jpg */; };
 		A6B83A5A2059F47100373BA6 /* MazeWall.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A592059F47100373BA6 /* MazeWall.m */; };
 		A6B83A5F205A422400373BA6 /* wall_both.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6B83A5B205A422300373BA6 /* wall_both.jpg */; };
@@ -53,8 +53,8 @@
 		A6B83A4E2059A6B800373BA6 /* Model.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		A6B83A502059D51900373BA6 /* MazeFloor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazeFloor.m; sourceTree = "<group>"; };
 		A6B83A522059D53900373BA6 /* MazeFloor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeFloor.h; sourceTree = "<group>"; };
-		A6B83A532059E08A00373BA6 /* MazeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeBuilder.h; sourceTree = "<group>"; };
-		A6B83A542059E0F200373BA6 /* MazeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MazeBuilder.mm; sourceTree = "<group>"; };
+		A6B83A532059E08A00373BA6 /* MazeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeObject.h; sourceTree = "<group>"; };
+		A6B83A542059E0F200373BA6 /* MazeObject.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MazeObject.mm; sourceTree = "<group>"; };
 		A6B83A562059F22A00373BA6 /* dirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt.jpg; sourceTree = "<group>"; };
 		A6B83A582059F3FB00373BA6 /* MazeWall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeWall.h; sourceTree = "<group>"; };
 		A6B83A592059F47100373BA6 /* MazeWall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazeWall.m; sourceTree = "<group>"; };
@@ -116,8 +116,8 @@
 				A67097F6204751670041542A /* DisjointSet.h */,
 				A67097F8204751670041542A /* maze.hpp */,
 				A67097F5204751670041542A /* maze.cpp */,
-				A6B83A532059E08A00373BA6 /* MazeBuilder.h */,
-				A6B83A542059E0F200373BA6 /* MazeBuilder.mm */,
+				A6B83A532059E08A00373BA6 /* MazeObject.h */,
+				A6B83A542059E0F200373BA6 /* MazeObject.mm */,
 				A67097DF2047512B0041542A /* AppDelegate.h */,
 				A67097E02047512B0041542A /* AppDelegate.m */,
 				A67097E22047512B0041542A /* ViewController.h */,
@@ -235,7 +235,7 @@
 				A67097FD204759C80041542A /* Renderer.mm in Sources */,
 				A67097FA204751680041542A /* DisjointSet.cpp in Sources */,
 				A6B83A4F2059A6B800373BA6 /* Model.m in Sources */,
-				A6B83A552059E0F200373BA6 /* MazeBuilder.mm in Sources */,
+				A6B83A552059E0F200373BA6 /* MazeObject.mm in Sources */,
 				A6B83A512059D51900373BA6 /* MazeFloor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

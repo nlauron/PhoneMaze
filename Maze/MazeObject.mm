@@ -6,7 +6,7 @@
 //  Copyright © 2018 Matthew Taylor. All rights reserved.
 //
 
-#import "MazeBuilder.h"
+#import "MazeObject.h"
 #include "maze.hpp"
 #include "MazeFloor.h"
 #include "MazeWall.h"
@@ -16,8 +16,9 @@
 }
 @end
 
-
 @implementation MazeObject
+
+@synthesize startLocation;
 
 - (id)init:(Renderer*)renderer row:(int)row col:(int)col {
     self = [super init];
@@ -27,8 +28,7 @@
     float startX = -col / 2.0f;
     float startZ = -row / 2.0f;
     
-    [renderer.camera translate:startX y:0 z: startZ - 1.5f];
-    [renderer.camera rotate:0 y:M_PI z:0];
+    startLocation = GLKMatrix4Translate(GLKMatrix4Identity, startX, 0, startZ);
     
     for(int i = 0; i < row; i++) {
         for(int j = 0; j < col; j++) {

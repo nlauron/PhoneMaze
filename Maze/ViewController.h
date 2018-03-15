@@ -13,6 +13,7 @@
 
 @interface ViewController : GLKViewController
 
+- (void)resetCamera;
 
 @end
 

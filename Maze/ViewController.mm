@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "MazeBuilder.h"
+#import "MazeObject.h"
+#include "GLESRenderer.hpp"
 
 @interface ViewController () {
     Renderer *glesRenderer;
@@ -48,6 +49,12 @@
     [self.view addGestureRecognizer:doubleTapRecognizer];
     
     maze = [[MazeObject alloc] init:glesRenderer row:10 col:10];
+    
+    glesRenderer.camera.transform = GLKMatrix4Translate(maze.startLocation, 0, 0, -1.5f);
+    [glesRenderer.camera rotate:0 y:M_PI z:0];
+    
+    [glesRenderer addCube:maze.startLocation];
+    
 }
 
 - (void)singleDragResponder: (UIPanGestureRecognizer *) sender {
@@ -64,8 +71,9 @@
         [glesRenderer.camera translate:0 y:0 z:-.1];
 }
 
-- (void)tapRecognizer: (UITapGestureRecognizer *) sender {
-    
+- (void)tapResponder: (UITapGestureRecognizer *) sender {
+    glesRenderer.camera.transform = GLKMatrix4Translate(maze.startLocation, 0, 0, -1.5f);
+    [glesRenderer.camera rotate:0 y:M_PI z:0];
 }
 
 - (void)doubleTapResponder: (UITapGestureRecognizer *) sender {
@@ -102,9 +110,14 @@
     } else {
         [glesRenderer flashlightOff];
     }
+    
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
     [glesRenderer draw:rect];
 }
+
+- (void)resetCamera {
+}
+
 @end

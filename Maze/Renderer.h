@@ -27,6 +27,7 @@
 - (void)flashlightOn;
 - (void)flashlightOff;
 - (void)addModel:(Model*)mod;
+- (void)addCube:(GLKMatrix4)loc;
 
 @end
 
