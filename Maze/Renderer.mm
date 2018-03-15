@@ -18,6 +18,8 @@ enum
     UNIFORM_PASSTHROUGH,
     UNIFORM_SHADEINFRAG,
     UNIFORM_TEXTURE,
+    UNIFORM_FOGGY,
+    UNIFORM_FOGSELECTOR,
     NUM_UNIFORMS
 };
 GLint uniforms[NUM_UNIFORMS];
@@ -221,15 +223,37 @@ enum
     glClearColor(0.26f, 0.525f, 0.957f, 1.0f);
 }
 
-- (void)fog
+- (void)fogOn
+{
+    glUniform1f(uniforms[UNIFORM_FOGGY], true);
+}
+
+- (void)fogOff
+{
+    glUniform1f(uniforms[UNIFORM_FOGGY], false);
+}
+
+- (void)fogLinear
+{
+    glUniform1f(uniforms[UNIFORM_FOGSELECTOR], 0);
+}
+
+- (void)fogSpecular
+{
+    glUniform1f(uniforms[UNIFORM_FOGSELECTOR], 1);
+    
+}
+
+- (void)flashlightOn
 {
     
 }
 
-- (void)flashlight
+- (void)flashlightOff
 {
     
 }
+
 - (void)addModel:(Model*)mod {
     [modelList addObject:mod];
 }
