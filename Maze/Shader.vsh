@@ -26,6 +26,7 @@ void main()
     } else if (shadeInFrag) {
         v_normal = normal;
         v_texcoord = texCoordIn;
+        v_colorDiffuse = colorDiffuse;
     } else {
         // Diffuse shading
         vec3 eyeNormal = normalize(normalMatrix * normal);

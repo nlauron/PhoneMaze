@@ -41,7 +41,7 @@
     [doubleTapRecognizer setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTapRecognizer];
     
-    maze = [[MazeObject alloc] init:glesRenderer x:10 y:10];
+    maze = [[MazeObject alloc] init:glesRenderer row:10 col:10];
 }
 
 - (void)singleDragResponder: (UIPanGestureRecognizer *) sender {

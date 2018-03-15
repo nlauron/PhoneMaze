@@ -48,9 +48,7 @@
     self.indices = malloc(sizeof(int) * 6);
     memcpy(self.indices, inds, sizeof(int) * 6);
     self.numIndices = 6;
-    
-    [self rotate:0 y:0 z:0];
-    
+        
     return self;
 }
 

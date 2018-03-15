@@ -211,12 +211,14 @@ enum
 
 - (void)nightDiffuse
 {
-    glVertexAttrib4f ( 4, 0.25f, 0.25f, 0.25f, 0.25f);
+    glVertexAttrib4f ( 4, 0.3f, 0.416f, 0.6275f, 1.0f);
+    glClearColor(0.0f, 0.075f, 0.188f, 1.0f);
 }
 
 - (void)dayDiffuse
 {
-    glVertexAttrib4f ( 4, 1.0f, 1.0f, 1.0f, 1.0f );
+    glVertexAttrib4f ( 4, 1.0f, 0.93f, 0.486f, 1.0f );
+    glClearColor(0.26f, 0.525f, 0.957f, 1.0f);
 }
 
 - (void)fog

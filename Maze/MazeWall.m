@@ -19,10 +19,10 @@
     self = [super init:x y:y z:z];
     
     float verts[] = {
-        -0.5f, 0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f, 0.5f, -0.5f
+        -0.5f, -0.5f, -0.49f,
+        -0.5f, 0.5f, -0.49f,
+        0.5f, 0.5f, -0.49f,
+        0.5f, -0.5f, -0.49f
     };
     
     float norms[] = {
@@ -40,8 +40,8 @@
     };
     
     int inds[] = {
-        0, 2, 1,
-        0, 3, 2
+        0, 1, 2,
+        0, 2, 3
     };
     
     self.vertices = malloc(sizeof(float) * 12);
