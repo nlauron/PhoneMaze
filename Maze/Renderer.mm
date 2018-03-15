@@ -42,6 +42,7 @@ enum
 
     GLKMatrix4 mvp;
     GLKMatrix3 normalMatrix;
+    Model *cube;
 }
 
 @end
@@ -108,6 +109,21 @@ enum
     camera = [[Model alloc] init:0 y:0 z:0];
     
     modelList = [[NSMutableArray alloc] init];
+    
+    cube = [[Model alloc] init:0 y:0 z:0];
+
+    float *vertices, *normals, *texCoords;
+    int *indices;
+    
+    cube.numIndices = glesRenderer.GenCube(0.3f, &vertices, &normals, &texCoords, &indices);
+    cube.vertices = vertices;
+    cube.normals = normals;
+    cube.texCoords = texCoords;
+    cube.indices = indices;
+    cube.texIndex = 1;
+    
+    [modelList addObject:cube];
+
 }
 
 - (void)update
@@ -116,10 +132,7 @@ enum
     auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastTime).count();
     lastTime = currentTime;
     
-    if (isRotating)
-    {
-        //[camera rotate:0 y:0.001f * elapsedTime z:0];
-    }
+    [cube rotate:0.001f * elapsedTime y:0 z: 0.001f * elapsedTime];
 
 }
 
@@ -267,6 +280,10 @@ enum
 
 - (void)addModel:(Model*)mod {
     [modelList addObject:mod];
+}
+
+- (void)addCube:(GLKMatrix4)loc {
+    cube.transform = loc;
 }
 
 @end
