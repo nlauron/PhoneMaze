@@ -36,34 +36,30 @@
     [singleDragRecognizer setMaximumNumberOfTouches:1];
     [self.view addGestureRecognizer:singleDragRecognizer];
     
-    UITapGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapResponder:)];
-    [tapRecognizer setNumberOfTouchesRequired:1];
-    [tapRecognizer setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:tapRecognizer];
-    
-    
     UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapResponder:)];
     [doubleTapRecognizer setNumberOfTouchesRequired:2];
     [doubleTapRecognizer setNumberOfTapsRequired:2];
     [self.view addGestureRecognizer:doubleTapRecognizer];
-        
+    
     maze = [[MazeObject alloc] init:glesRenderer x:10 y:10];
 }
 
-- (void)singleDragResponder: (UIGestureRecognizer *) sender {
+- (void)singleDragResponder: (UIPanGestureRecognizer *) sender {
+    CGPoint controlPoint = [sender translationInView:self.view];
+    CGPoint vector = [sender velocityInView:self.view];
+    if (vector.x > 0)
+        [glesRenderer.camera rotate:0 y:-.035 z:0];
+    if (vector.x < 0)
+        [glesRenderer.camera rotate:0 y:.035 z:0];
     
+    if (vector.y > 0.5)
+        [glesRenderer.camera translate:0 y:0 z:.1];
+    if (vector.y < -0.5)
+        [glesRenderer.camera translate:0 y:0 z:-.1];
 }
 
-- (void)tapResponder: (UIGestureRecognizer *) sender {
+- (void)doubleTapResponder: (UITapGestureRecognizer *) sender {
     
-}
-
-
-- (void)doubleTapResponder: (UIGestureRecognizer *) sender {
-    
-}
-
-- (void)daytimeToggle{
 }
 
 - (void)foggyToggle {
