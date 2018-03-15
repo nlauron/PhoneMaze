@@ -19,9 +19,58 @@ uniform mat3 normalMatrix;
 uniform bool passThrough;
 uniform bool shadeInFrag;
 uniform bool foggy;
+uniform bool spotLight;
+uniform bool Normalize;
+uniform vec3 viewerPos;
+
+out vec3 eyeDirection;
+out vec3 eyeCord3;
+struct Materials
+{
+    vec4 ambient;
+    vec4 diffuse;
+    vec4 specular;
+    float shininess;
+};
+
+
+struct Lights
+{
+    vec4 position;
+    vec3 direction;
+    vec4 ambient;
+    vec4 diffuse;
+    vec4 specular;
+    float spotCosCutoff;
+    float spotCosInnerCutoff;
+    float spotExponent;
+    float constantAttenuation;
+    float linearAttenuation;
+    float quadraticAttenuation;
+};
+
+uniform Materials material;
+#define numLights 8
+uniform Lights light[numLights];
+out vec3 vPosition;
+uniform mat4 MV;
+uniform mat4 MVP;
 
 void main()
 {
+    if (spotLight) {
+    v_normal = (normalMatrix * normal);
+    if (Normalize == true)
+    {
+        v_normal = normalize(normal);
+    }
+    
+    vec4 vertexPos = MV * vec4(position);
+    vec3 vertexEyePos = vertexPos.xyz / vertexPos.w;
+    
+    vPosition = vertexEyePos;
+    gl_Position = MVP*vec4(position);
+    }
     if (foggy) {
         world_pos = (modelViewProjectionMatrix * vec4(position)).xyz;
         world_normal = normalize(mat3(normalMatrix)* normal);
