@@ -136,9 +136,7 @@ enum
         glVertexAttribPointer ( 0, 3, GL_FLOAT,
                                GL_FALSE, 3 * sizeof ( GLfloat ), mod.vertices );
         glEnableVertexAttribArray ( 0 );
-        
-        glVertexAttrib4f ( 1, 1.0f, 0.0f, 0.0f, 1.0f );
-        
+                
         glVertexAttribPointer ( 2, 3, GL_FLOAT,
                                GL_FALSE, 3 * sizeof ( GLfloat ), mod.normals );
         glEnableVertexAttribArray ( 2 );
