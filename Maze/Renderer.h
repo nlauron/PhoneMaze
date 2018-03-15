@@ -20,6 +20,10 @@
 - (void)draw:(CGRect)drawRect;
 - (void)dayDiffuse;
 - (void)nightDiffuse;
+- (void)fogOn;
+- (void)fogOff;
+- (void)flashlightOn;
+- (void)flashlightOff;
 - (void)addModel:(Model*)mod;
 
 @end

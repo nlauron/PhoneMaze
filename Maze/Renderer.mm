@@ -205,6 +205,7 @@ enum
 - (void)nightDiffuse
 {
     glVertexAttrib4f ( 4, 0.25f, 0.25f, 0.25f, 0.25f);
+    
 }
 
 - (void)dayDiffuse
@@ -212,15 +213,26 @@ enum
     glVertexAttrib4f ( 4, 1.0f, 1.0f, 1.0f, 1.0f );
 }
 
-- (void)fog
+- (void)fogOn
 {
     
 }
 
-- (void)flashlight
+- (void)fogOff
 {
     
 }
+
+- (void)flashlightOn
+{
+    
+}
+
+- (void)flashlightOff
+{
+    
+}
+
 - (void)addModel:(Model*)mod {
     [modelList addObject:mod];
 }

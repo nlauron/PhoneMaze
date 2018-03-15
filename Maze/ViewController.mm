@@ -36,6 +36,11 @@
     [singleDragRecognizer setMaximumNumberOfTouches:1];
     [self.view addGestureRecognizer:singleDragRecognizer];
     
+    UITapGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapResponder:)];
+    [tapRecognizer setNumberOfTouchesRequired:1];
+    [tapRecognizer setNumberOfTapsRequired:2];
+    [self.view addGestureRecognizer:tapRecognizer];
+    
     UITapGestureRecognizer * doubleTapRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapResponder:)];
     [doubleTapRecognizer setNumberOfTouchesRequired:2];
     [doubleTapRecognizer setNumberOfTapsRequired:2];
@@ -54,25 +59,15 @@
     
     if (vector.y > 0.5)
         [glesRenderer.camera translate:0 y:0 z:.1];
-    if (vector.y < -0.5)
+    if (vector.y < -0.5) 
         [glesRenderer.camera translate:0 y:0 z:-.1];
 }
 
+- (void)tapRecognizer: (UITapGestureRecognizer *) sender {
+    
+}
+
 - (void)doubleTapResponder: (UITapGestureRecognizer *) sender {
-    
-}
-
-- (void)foggyToggle {
-    if ([_fogToggle isOn]) {
-        
-    }
-    
-}
-
-- (void)flashlightToggle{
-    if ([_lightToggle isOn]) {
-        
-    }
     
 }
 
@@ -87,6 +82,18 @@
         [glesRenderer nightDiffuse];
     } else {
         [glesRenderer dayDiffuse];
+    }
+    
+    if ([_fogToggle isOn]) {
+        [glesRenderer fogOn];
+    } else {
+        [glesRenderer fogOff];
+    }
+    
+    if ([_lightToggle isOn]) {
+        [glesRenderer flashlightOn];
+    } else {
+        [glesRenderer flashlightOff];
     }
 }
 
