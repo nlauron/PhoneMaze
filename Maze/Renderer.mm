@@ -34,6 +34,7 @@ enum
     GLKView *theView;
     GLESRenderer glesRenderer;
     GLuint programObject;
+    GLuint floorTexture;
     GLuint crateTexture;
     std::chrono::time_point<std::chrono::steady_clock> lastTime;
     NSMutableArray *modelList;
@@ -78,16 +79,20 @@ enum
     rotAngle = 0.0f;
     isRotating = 1;
 
+    floorTexture = [self setupTexture:@"dirt.jpg"];
     crateTexture = [self setupTexture:@"crate.jpg"];
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, floorTexture);
+    glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, crateTexture);
+    
     glUniform1i(uniforms[UNIFORM_TEXTURE], 0);
 
     glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
     glEnable(GL_DEPTH_TEST);
     lastTime = std::chrono::steady_clock::now();
     
-    camera = [[Model alloc] init:0 y:0 z:5];
+    camera = [[Model alloc] init:0 y:0 z:0];
     
     modelList = [[NSMutableArray alloc] init];
 }
@@ -100,7 +105,7 @@ enum
     
     if (isRotating)
     {
-        //camera = GLKMatrix4RotateX(camera, 0.01f * elapsedTime);
+        //[camera rotate:0 y:0.001f * elapsedTime z:0];
     }
 
 }
@@ -136,7 +141,7 @@ enum
         glVertexAttribPointer ( 0, 3, GL_FLOAT,
                                GL_FALSE, 3 * sizeof ( GLfloat ), mod.vertices );
         glEnableVertexAttribArray ( 0 );
-                
+        
         glVertexAttribPointer ( 2, 3, GL_FLOAT,
                                GL_FALSE, 3 * sizeof ( GLfloat ), mod.normals );
         glEnableVertexAttribArray ( 2 );
@@ -144,6 +149,8 @@ enum
         glVertexAttribPointer ( 3, 2, GL_FLOAT,
                                GL_FALSE, 2 * sizeof ( GLfloat ), mod.texCoords );
         glEnableVertexAttribArray ( 3 );
+        
+        glUniform1i(uniforms[UNIFORM_TEXTURE], mod.texIndex);
         
         glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, FALSE, (const float *)mvp.m);
         glDrawElements ( GL_TRIANGLES, mod.numIndices, GL_UNSIGNED_INT, mod.indices );
@@ -204,12 +211,14 @@ enum
 
 - (void)nightDiffuse
 {
-    glVertexAttrib4f ( 4, 0.25f, 0.25f, 0.25f, 0.25f);
+    glVertexAttrib4f ( 4, 0.3f, 0.416f, 0.6275f, 1.0f);
+    glClearColor(0.0f, 0.075f, 0.188f, 1.0f);
 }
 
 - (void)dayDiffuse
 {
-    glVertexAttrib4f ( 4, 1.0f, 1.0f, 1.0f, 1.0f );
+    glVertexAttrib4f ( 4, 1.0f, 0.93f, 0.486f, 1.0f );
+    glClearColor(0.26f, 0.525f, 0.957f, 1.0f);
 }
 
 - (void)fog

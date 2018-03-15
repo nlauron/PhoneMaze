@@ -15,12 +15,14 @@
 @synthesize transform;
 @synthesize vertices;
 @synthesize texCoords;
+@synthesize texIndex;
 @synthesize normals;
 
 - (id)init:(float)x y:(float)y z:(float)z {
     self = [super init];
     self.transform = GLKMatrix4Identity;
     self.transform = GLKMatrix4Translate(self.transform, x, y, z);
+    self.texIndex = 0;
     return self;
 }
 

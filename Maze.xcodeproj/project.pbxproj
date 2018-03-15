@@ -19,6 +19,8 @@
 		A6B83A4F2059A6B800373BA6 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A4E2059A6B800373BA6 /* Model.m */; };
 		A6B83A512059D51900373BA6 /* MazeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A502059D51900373BA6 /* MazeFloor.m */; };
 		A6B83A552059E0F200373BA6 /* MazeBuilder.mm in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A542059E0F200373BA6 /* MazeBuilder.mm */; };
+		A6B83A572059F22A00373BA6 /* dirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A6B83A562059F22A00373BA6 /* dirt.jpg */; };
+		A6B83A5A2059F47100373BA6 /* MazeWall.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B83A592059F47100373BA6 /* MazeWall.m */; };
 		C926F8862058F7310077F931 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C926F8852058F7310077F931 /* GLKit.framework */; };
 		C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C986111720587EF700335C8A /* GLESRenderer.cpp */; };
 		C986111F2058813200335C8A /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C986111E2058813200335C8A /* crate.jpg */; };
@@ -49,6 +51,9 @@
 		A6B83A522059D53900373BA6 /* MazeFloor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeFloor.h; sourceTree = "<group>"; };
 		A6B83A532059E08A00373BA6 /* MazeBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeBuilder.h; sourceTree = "<group>"; };
 		A6B83A542059E0F200373BA6 /* MazeBuilder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MazeBuilder.mm; sourceTree = "<group>"; };
+		A6B83A562059F22A00373BA6 /* dirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt.jpg; sourceTree = "<group>"; };
+		A6B83A582059F3FB00373BA6 /* MazeWall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazeWall.h; sourceTree = "<group>"; };
+		A6B83A592059F47100373BA6 /* MazeWall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazeWall.m; sourceTree = "<group>"; };
 		C926F8852058F7310077F931 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		C986111720587EF700335C8A /* GLESRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLESRenderer.cpp; sourceTree = "<group>"; };
 		C986111820587EF800335C8A /* GLESRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLESRenderer.hpp; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 		A67097DE2047512B0041542A /* Maze */ = {
 			isa = PBXGroup;
 			children = (
+				A6B83A562059F22A00373BA6 /* dirt.jpg */,
 				C98611202058818B00335C8A /* Shader.fsh */,
 				C98611212058818B00335C8A /* Shader.vsh */,
 				C986111E2058813200335C8A /* crate.jpg */,
@@ -96,10 +102,10 @@
 				C986111820587EF800335C8A /* GLESRenderer.hpp */,
 				A67097F7204751670041542A /* DisjointSet.cpp */,
 				A67097F6204751670041542A /* DisjointSet.h */,
+				A67097F8204751670041542A /* maze.hpp */,
 				A67097F5204751670041542A /* maze.cpp */,
 				A6B83A532059E08A00373BA6 /* MazeBuilder.h */,
 				A6B83A542059E0F200373BA6 /* MazeBuilder.mm */,
-				A67097F8204751670041542A /* maze.hpp */,
 				A67097DF2047512B0041542A /* AppDelegate.h */,
 				A67097E02047512B0041542A /* AppDelegate.m */,
 				A67097E22047512B0041542A /* ViewController.h */,
@@ -110,9 +116,11 @@
 				A67097ED2047512B0041542A /* Info.plist */,
 				A67097EE2047512B0041542A /* main.m */,
 				A67097FC204759C80041542A /* Renderer.h */,
-				A6B83A502059D51900373BA6 /* MazeFloor.m */,
-				A6B83A522059D53900373BA6 /* MazeFloor.h */,
 				A67097FB204759C70041542A /* Renderer.mm */,
+				A6B83A582059F3FB00373BA6 /* MazeWall.h */,
+				A6B83A592059F47100373BA6 /* MazeWall.m */,
+				A6B83A522059D53900373BA6 /* MazeFloor.h */,
+				A6B83A502059D51900373BA6 /* MazeFloor.m */,
 				A6B83A4D2059A41200373BA6 /* Model.h */,
 				A6B83A4E2059A6B800373BA6 /* Model.m */,
 			);
@@ -190,6 +198,7 @@
 				C98611232058818B00335C8A /* Shader.vsh in Resources */,
 				C986111F2058813200335C8A /* crate.jpg in Resources */,
 				A67097E72047512B0041542A /* Main.storyboard in Resources */,
+				A6B83A572059F22A00373BA6 /* dirt.jpg in Resources */,
 				C98611222058818B00335C8A /* Shader.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +215,7 @@
 				A67097EF2047512B0041542A /* main.m in Sources */,
 				A67097F9204751680041542A /* maze.cpp in Sources */,
 				A67097E12047512B0041542A /* AppDelegate.m in Sources */,
+				A6B83A5A2059F47100373BA6 /* MazeWall.m in Sources */,
 				A67097FD204759C80041542A /* Renderer.mm in Sources */,
 				A67097FA204751680041542A /* DisjointSet.cpp in Sources */,
 				A6B83A4F2059A6B800373BA6 /* Model.m in Sources */,
@@ -345,10 +355,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EXV3QGL866;
+				DEVELOPMENT_TEAM = 3E5RA54B7H;
 				INFOPLIST_FILE = Maze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nikomatt.bcit.ca.Maze;
+				PRODUCT_BUNDLE_IDENTIFIER = nikomatt.bcit.ca.Maze1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -359,10 +369,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EXV3QGL866;
+				DEVELOPMENT_TEAM = 3E5RA54B7H;
 				INFOPLIST_FILE = Maze/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nikomatt.bcit.ca.Maze;
+				PRODUCT_BUNDLE_IDENTIFIER = nikomatt.bcit.ca.Maze1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

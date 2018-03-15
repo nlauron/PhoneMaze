@@ -17,7 +17,7 @@ void main()
 {
     if (!passThrough && shadeInFrag) {
         vec3 eyeNormal = normalize(normalMatrix * v_normal);
-        vec3 lightPosition = vec3(0.0, 0.0, 1.0);
+        vec3 lightPosition = vec3(0.0, 1.0, 1.0);
         vec4 diffuseColor =  v_colorDiffuse;
         
         float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));

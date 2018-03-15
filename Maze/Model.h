@@ -18,6 +18,7 @@
 @property float *normals;
 @property float *texCoords;
 @property int numIndices;
+@property int texIndex;
 @property GLKMatrix4 transform;
 
 - (id) init:(float)x y:(float)y z:(float)z;
