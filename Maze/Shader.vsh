@@ -90,7 +90,7 @@ void main()
     } else {
         // Diffuse shading
         vec3 eyeNormal = normalize(normalMatrix * normal);
-        vec3 lightPosition = vec3(0.0, 0.0, 1.0);
+        vec3 lightPosition = vec3(0.0, 1000.0, 1000.0);
         vec4 diffuseColor = colorDiffuse;
         
         float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));

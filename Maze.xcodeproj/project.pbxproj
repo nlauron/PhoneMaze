@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6218F242075760900C11724 /* ModelReader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6218F232075760900C11724 /* ModelReader.m */; };
+		A6218F27207589C400C11724 /* Cactuar.obj in Resources */ = {isa = PBXBuildFile; fileRef = A6218F26207589C400C11724 /* Cactuar.obj */; };
+		A6218F29207589DA00C11724 /* Cactuar.mtl in Resources */ = {isa = PBXBuildFile; fileRef = A6218F28207589DA00C11724 /* Cactuar.mtl */; };
+		A6218F2B2075BC6D00C11724 /* cactuar.png in Resources */ = {isa = PBXBuildFile; fileRef = A6218F2A2075BC6D00C11724 /* cactuar.png */; };
 		A67097E12047512B0041542A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A67097E02047512B0041542A /* AppDelegate.m */; };
 		A67097E42047512B0041542A /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A67097E32047512B0041542A /* ViewController.mm */; };
 		A67097E72047512B0041542A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67097E52047512B0041542A /* Main.storyboard */; };
@@ -34,6 +38,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6218F232075760900C11724 /* ModelReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelReader.m; sourceTree = "<group>"; };
+		A6218F252075761F00C11724 /* ModelReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelReader.h; sourceTree = "<group>"; };
+		A6218F26207589C400C11724 /* Cactuar.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cactuar.obj; sourceTree = "<group>"; };
+		A6218F28207589DA00C11724 /* Cactuar.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cactuar.mtl; sourceTree = "<group>"; };
+		A6218F2A2075BC6D00C11724 /* cactuar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cactuar.png; sourceTree = "<group>"; };
 		A67097DC2047512B0041542A /* Maze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67097DF2047512B0041542A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A67097E02047512B0041542A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,10 +113,13 @@
 		A67097DE2047512B0041542A /* Maze */ = {
 			isa = PBXGroup;
 			children = (
+				A6218F28207589DA00C11724 /* Cactuar.mtl */,
+				A6218F26207589C400C11724 /* Cactuar.obj */,
 				A6B83A5B205A422300373BA6 /* wall_both.jpg */,
 				A6B83A63205A456A00373BA6 /* wall_left.jpg */,
 				A6B83A65205A456A00373BA6 /* wall_none.jpg */,
 				A6B83A64205A456A00373BA6 /* wall_right.jpg */,
+				A6218F2A2075BC6D00C11724 /* cactuar.png */,
 				A6B83A562059F22A00373BA6 /* dirt.jpg */,
 				C98611202058818B00335C8A /* Shader.fsh */,
 				C98611212058818B00335C8A /* Shader.vsh */,
@@ -138,6 +150,8 @@
 				A6B83A4D2059A41200373BA6 /* Model.h */,
 				A6B83A4E2059A6B800373BA6 /* Model.m */,
 				F24CFC7B2075C1AE00BA3C18 /* Collision.m */,
+				A6218F252075761F00C11724 /* ModelReader.h */,
+				A6218F232075760900C11724 /* ModelReader.m */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -210,15 +224,18 @@
 			files = (
 				A6B83A66205A456A00373BA6 /* wall_left.jpg in Resources */,
 				A6B83A5F205A422400373BA6 /* wall_both.jpg in Resources */,
+				A6218F29207589DA00C11724 /* Cactuar.mtl in Resources */,
 				A6B83A68205A456A00373BA6 /* wall_none.jpg in Resources */,
 				A67097EC2047512B0041542A /* LaunchScreen.storyboard in Resources */,
 				A67097E92047512B0041542A /* Assets.xcassets in Resources */,
 				A6B83A67205A456A00373BA6 /* wall_right.jpg in Resources */,
+				A6218F2B2075BC6D00C11724 /* cactuar.png in Resources */,
 				C98611232058818B00335C8A /* Shader.vsh in Resources */,
 				C986111F2058813200335C8A /* crate.jpg in Resources */,
 				A67097E72047512B0041542A /* Main.storyboard in Resources */,
 				A6B83A572059F22A00373BA6 /* dirt.jpg in Resources */,
 				C98611222058818B00335C8A /* Shader.fsh in Resources */,
+				A6218F27207589C400C11724 /* Cactuar.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +250,7 @@
 				C986111920587EF800335C8A /* GLESRenderer.cpp in Sources */,
 				A67097EF2047512B0041542A /* main.m in Sources */,
 				A67097F9204751680041542A /* maze.cpp in Sources */,
+				A6218F242075760900C11724 /* ModelReader.m in Sources */,
 				A67097E12047512B0041542A /* AppDelegate.m in Sources */,
 				A6B83A5A2059F47100373BA6 /* MazeWall.m in Sources */,
 				F24CFC7C2075C1AE00BA3C18 /* Collision.m in Sources */,
