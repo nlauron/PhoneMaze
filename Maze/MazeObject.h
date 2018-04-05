@@ -6,15 +6,17 @@
 //  Copyright © 2018 Matthew Taylor. All rights reserved.
 //
 
-#ifndef MazeBuilder_h
-#define MazeBuilder_h
+#ifndef MazeObject_h
+#define MazeObject_h
 
 #import "Renderer.h"
 
 @interface MazeObject : NSObject
 
+@property GLKMatrix4 startLocation;
+
 - (id)init:(Renderer*)renderer row:(int)row col:(int)col;
 
 @end
 
-#endif /* MazeBuilder_h */
+#endif /* MazeObject_h */
