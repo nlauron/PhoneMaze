@@ -13,6 +13,7 @@
 @interface ViewController () {
     Renderer *glesRenderer;
     MazeObject *maze;
+    MazeObject *mazeWall;
 }
 
 @property (weak, nonatomic) IBOutlet UISwitch *dayToggle;
@@ -66,9 +67,9 @@
         [glesRenderer.camera rotate:0 y:.035 z:0];
     
     if (vector.y > 0.5)
-        [glesRenderer.camera translate:0 y:0 z:.1];
+        [glesRenderer.camera translate:0 y:0 z:.05];
     if (vector.y < -0.5) 
-        [glesRenderer.camera translate:0 y:0 z:-.1];
+        [glesRenderer.camera translate:0 y:0 z:-.05];
 }
 
 - (void)tapResponder: (UITapGestureRecognizer *) sender {
@@ -83,6 +84,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)collisionDetection {
+    
 }
 
 - (void)update {

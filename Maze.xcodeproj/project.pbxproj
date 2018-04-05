@@ -30,6 +30,7 @@
 		C986111F2058813200335C8A /* crate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C986111E2058813200335C8A /* crate.jpg */; };
 		C98611222058818B00335C8A /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C98611202058818B00335C8A /* Shader.fsh */; };
 		C98611232058818B00335C8A /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C98611212058818B00335C8A /* Shader.vsh */; };
+		F24CFC7C2075C1AE00BA3C18 /* Collision.m in Sources */ = {isa = PBXBuildFile; fileRef = F24CFC7B2075C1AE00BA3C18 /* Collision.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		C986111E2058813200335C8A /* crate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crate.jpg; sourceTree = "<group>"; };
 		C98611202058818B00335C8A /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		C98611212058818B00335C8A /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		F24CFC7B2075C1AE00BA3C18 /* Collision.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Collision.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				A6B83A502059D51900373BA6 /* MazeFloor.m */,
 				A6B83A4D2059A41200373BA6 /* Model.h */,
 				A6B83A4E2059A6B800373BA6 /* Model.m */,
+				F24CFC7B2075C1AE00BA3C18 /* Collision.m */,
 			);
 			path = Maze;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				A67097F9204751680041542A /* maze.cpp in Sources */,
 				A67097E12047512B0041542A /* AppDelegate.m in Sources */,
 				A6B83A5A2059F47100373BA6 /* MazeWall.m in Sources */,
+				F24CFC7C2075C1AE00BA3C18 /* Collision.m in Sources */,
 				A67097FD204759C80041542A /* Renderer.mm in Sources */,
 				A67097FA204751680041542A /* DisjointSet.cpp in Sources */,
 				A6B83A4F2059A6B800373BA6 /* Model.m in Sources */,

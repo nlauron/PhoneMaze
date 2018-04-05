@@ -39,28 +39,28 @@
             MazeCell cell = maze->GetCell(i,j);
             
             if(cell.northWallPresent){
-                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:0];
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord - 0.499 dir:0];
                 wall.texIndex = 2;
                 if(cell.westWallPresent) wall.texIndex += 1;
                 if(cell.eastWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.westWallPresent){
-                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:1];
+                MazeWall *wall = [[MazeWall alloc] init:xCoord - 0.499 y:0 z:zCoord dir:1];
                 wall.texIndex = 2;
                 if(cell.southWallPresent) wall.texIndex += 1;
                 if(cell.northWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.southWallPresent){
-                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:2];
+                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord + 0.499 dir:2];
                 wall.texIndex = 2;
                 if(cell.eastWallPresent) wall.texIndex += 1;
                 if(cell.westWallPresent) wall.texIndex += 2;
                 [renderer addModel:wall];
             }
             if(cell.eastWallPresent){
-                MazeWall *wall = [[MazeWall alloc] init:xCoord y:0 z:zCoord dir:3];
+                MazeWall *wall = [[MazeWall alloc] init:xCoord + 0.499 y:0 z:zCoord dir:3];
                 wall.texIndex = 2;
                 if(cell.northWallPresent) wall.texIndex += 1;
                 if(cell.southWallPresent) wall.texIndex += 2;
