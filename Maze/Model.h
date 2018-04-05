@@ -22,6 +22,8 @@
 @property GLKMatrix4 transform;
 
 - (id) init:(float)x y:(float)y z:(float)z;
+- (id) initWithVerts:(float*)verts numVert:(int)numVert norms:(float*)norms inds:(int*)inds numInd:(int)numInd;
+- (id) initWithTex:(float*)verts numVert:(int)numVert norms:(float*)norms inds:(int*)inds numInd:(int)numInd texels:(float*)texels texInd:(int)numInd;
 - (void) translate:(float)x y:(float)y z:(float)z;
 - (void) rotate:(float)x y:(float)y z:(float)z;
 - (void) scale:(float)x y:(float)y z:(float)z;

@@ -8,6 +8,7 @@
 #include <chrono>
 #include "GLESRenderer.hpp"
 #import "MazeFloor.h"
+#import "ModelReader.h"
 
 
 // Uniform index.
@@ -36,13 +37,13 @@ enum
     GLKView *theView;
     GLESRenderer glesRenderer;
     GLuint programObject;
-    GLuint floorTexture, crateTexture, wallTextureNone, wallTextureLeft, wallTextureRight, wallTextureBoth;
+    GLuint floorTexture, crateTexture, wallTextureNone, wallTextureLeft, wallTextureRight, wallTextureBoth, enemyTexture;
     std::chrono::time_point<std::chrono::steady_clock> lastTime;
     NSMutableArray *modelList;
 
     GLKMatrix4 mvp;
     GLKMatrix3 normalMatrix;
-    Model *cube;
+    Model *cube, *enemy;
 }
 
 @end
@@ -80,13 +81,14 @@ enum
         return;
     rotAngle = 0.0f;
     isRotating = 1;
-
+    
     floorTexture = [self setupTexture:@"dirt.jpg"];
     crateTexture = [self setupTexture:@"crate.jpg"];
     wallTextureNone = [self setupTexture:@"wall_none.jpg"];
     wallTextureLeft = [self setupTexture:@"wall_left.jpg"];
     wallTextureRight = [self setupTexture:@"wall_right.jpg"];
     wallTextureBoth = [self setupTexture:@"wall_both.jpg"];
+    enemyTexture = [self setupTexture:@"cactuar.png"];
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, floorTexture);
     glActiveTexture(GL_TEXTURE1);
@@ -99,6 +101,8 @@ enum
     glBindTexture(GL_TEXTURE_2D, wallTextureRight);
     glActiveTexture(GL_TEXTURE5);
     glBindTexture(GL_TEXTURE_2D, wallTextureBoth);
+    glActiveTexture(GL_TEXTURE6);
+    glBindTexture(GL_TEXTURE_2D, enemyTexture);
 
     glUniform1i(uniforms[UNIFORM_TEXTURE], 0);
 
@@ -123,7 +127,10 @@ enum
     cube.texIndex = 1;
     
     [modelList addObject:cube];
-
+    
+    enemy = [ModelReader readModel:@"Cactuar"];
+    [enemy scale:0.00015 y:0.00015 z: 0.00015];
+    [modelList addObject:enemy];
 }
 
 - (void)update
