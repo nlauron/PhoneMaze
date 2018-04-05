@@ -7,3 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Collision.h"
+
+@implementation Collision
+
+- (void)addWall {
+    
+}
+
+- (void)collide {
+    
+}
+
+@end
