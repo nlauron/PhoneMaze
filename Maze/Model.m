@@ -26,6 +26,28 @@
     return self;
 }
 
+- (id) initWithVerts:(float*)verts numVert:(int)numVert norms:(float*)norms inds:(int*)inds numInd:(int)numInd {
+    self = [self init:0 y:0 z:0];
+    self.vertices = malloc(sizeof(float) * numVert * 3);
+    memcpy(self.vertices, verts, sizeof(float) * numVert * 3);
+    self.normals = malloc(sizeof(float) * numVert * 3);
+    memcpy(self.normals, norms, sizeof(float) * numVert * 3);
+    self.indices = malloc(sizeof(int) * numInd);
+    memcpy(self.indices, inds, sizeof(int) * numInd);
+    self.numIndices = numInd;
+    
+    return self;
+}
+
+- (id) initWithTex:(float*)verts numVert:(int)numVert norms:(float*)norms inds:(int*)inds numInd:(int)numInd texels:(float*)texels texInd:(int)texInd {
+    self = [self initWithVerts:verts numVert:numVert norms:norms inds:inds numInd:numInd];
+    self.texCoords = malloc(sizeof(float) * numVert * 2);
+    memcpy(self.texCoords, texels, sizeof(float) * numVert * 2);
+    self.texIndex = texInd;
+    
+    return self;
+}
+
 - (void)translate:(float)x y:(float)y z:(float)z {
     self.transform = GLKMatrix4Translate(self.transform, x, y, z);
 }
